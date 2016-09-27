@@ -10,6 +10,6 @@ app.listen(process.env.PORT || 3000, function () {
 });
 
 app.post('/', function (req, res) {
-	console.log(req)
+	console.log(req.data)
     //res.send(req);
 });
