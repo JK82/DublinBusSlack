@@ -4,7 +4,7 @@ var axios = require('axios')
 
 var app = express();
 
-app.use(bodyParser().json);
+app.use(bodyParser.json());
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3001!');
