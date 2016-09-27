@@ -4,7 +4,7 @@
   "description": "A slash command app for slack users to check on dublin bus times",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "John Keane",
