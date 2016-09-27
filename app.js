@@ -10,5 +10,5 @@ app.listen(process.env.PORT || 3000, function () {
 });
 
 app.post('/', function (req, res) {
-  res.send('POST request to homepage');
+  res.send(JSON.stringify(req));
 });
