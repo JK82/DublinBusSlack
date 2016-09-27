@@ -14,6 +14,7 @@ app.post('/', function (req, res) {
 	var busStopNumber = req.body.text;
 	axios.get('http://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid='+ busStopNumber +'&format=json')
 	  .then(function (response) {
+	  	console.log(response)
 	    res.send(response)
 	  })
 	  .catch(function (error) {
