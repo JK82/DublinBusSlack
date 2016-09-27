@@ -14,30 +14,9 @@ app.post('/', function (req, res) {
 	var busStopNumber = req.body.text;
 	axios.get('http://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid='+ busStopNumber +'&format=json')
 	  .then(function (response) {
-	  	console.log('HI JOHN')
-	  	console.log(JSON.stringify(response.data.results))
-	    res.send(simpleStringify(response.results))
+	    res.send(simpleStringify(response.data.results[0].origin))
 	  })
 	  .catch(function (error) {
-	  	console.log('HI SELINA')
 	    console.log(error);
 	  });
-    //res.send(req);
 });
-
-function simpleStringify (object){
-    var simpleObject = {};
-    for (var prop in object ){
-        if (!object.hasOwnProperty(prop)){
-            continue;
-        }
-        if (typeof(object[prop]) == 'object'){
-            continue;
-        }
-        if (typeof(object[prop]) == 'function'){
-            continue;
-        }
-        simpleObject[prop] = object[prop];
-    }
-    return JSON.stringify(simpleObject); // returns cleaned up JSON
-};
