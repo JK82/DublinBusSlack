@@ -16,7 +16,7 @@ app.post('/', function (req, res) {
 	var busStopNumber = req.body.text;
 	var busStopName = '';
 	var busStopEmoji = ':busstop:';
-	var busEmoji = 'bus';
+	var busEmoji = ':bus:';
 	var messageForSlack = '';
 
 	axios.get('https://data.dublinked.ie/cgi-bin/rtpi/busstopinformation?stopid='+ busStopNumber +'&format=json')
@@ -28,7 +28,7 @@ app.post('/', function (req, res) {
 					response.data.results.map(function(bus){
 						messageForSlack += busEmoji + ' #' + bus.route + ' in ' + bus.departureduetime + ' minutes';
 					})
-					res.send(messageForSlack);
+					res.send({text:messageForSlack});
 				})
 				.catch(function (error) {
 					console.log(error);
