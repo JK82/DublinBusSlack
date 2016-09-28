@@ -1,8 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 var axios = require('axios')
-var Buses = require('./Buses')
-var Weather = require ('./Weather')
+var Buses = require('./buses')
+var Weather = require ('./weather')
 
 var app = express();
 
