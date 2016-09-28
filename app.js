@@ -35,7 +35,7 @@ app.post('/', function (req, res) {
 				  		case 'rain':
 				  				weather = ':rain_cloud:'
 				  			break;
-				  		case 'snow'
+				  		case 'snow':
 				  				weather = ':snow_cloud:'
 				  			break;
 				  		case 'sleet':
