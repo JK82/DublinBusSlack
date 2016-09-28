@@ -26,7 +26,7 @@ app.post('/', function (req, res) {
 				.then(function (response) {
 					messageForSlack = 'Heres the buses due at ' + busStopEmoji + ' ' + busStopName + '/n';
 					response.data.results.map(function(bus){
-						messageForSlack += busEmoji + ' #' + bus.route + ' in ' + bus.departureduetime + ' minutes';
+						messageForSlack += busEmoji + ' #' + bus.route + ' in ' + bus.departureduetime + ' minutes /n';
 					})
 					res.send({text:messageForSlack});
 				})
