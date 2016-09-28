@@ -25,7 +25,7 @@ app.post('/', function (req, res) {
 	Buses.getBusStopName(busStopNumber).then(function(response){
 		console.log('HI')
 		busStopName = response.data.results[0].shortname;
-		Weather.getWeather(response.data.results[0].latitude,esponse.data.results[0].longitude).then(function(response){
+		Weather.getWeather(response.data.results[0].latitude,response.data.results[0].longitude).then(function(response){
 			weather += Weather.getEmoji(response.data.currently.icon);
 			weather += ' ' + response.data.currently.summary;
 			Buses.getBuses(busStopNumber).then(function(response){
