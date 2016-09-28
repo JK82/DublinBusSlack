@@ -54,7 +54,7 @@ app.post('/', function (req, res) {
 				  				weather += ':mostly_sunny:'
 				  			break;
 				  		case 'partly-cloudy-night':
-				  				weather += '::crescent_moon::'
+				  				weather += ':crescent_moon:'
 				  			break
 				  		default:
 				  			''
