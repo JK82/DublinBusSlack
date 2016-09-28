@@ -30,7 +30,7 @@ app.post('/', function (req, res) {
 			weather += ' ' + response.data.currently.summary;
 			Buses.getBuses(busStopNumber).then(function(response){
 				messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
-				response.data.results.map(function(bus){
+				response.data.results.map(function(response){
 					messageForSlack += busEmoji + ' #' + bus.route + ' in ' + bus.departureduetime + ' minutes\n';
 				})
 				messageForSlack += '\n' + weather;
