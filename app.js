@@ -24,7 +24,7 @@ app.post('/', function (req, res) {
 	  		busStopName = response.data.results[0].shortname;
 	  		axios.get('http://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid='+ busStopNumber +'&format=json')
 				.then(function (response) {
-					messageForSlack = "Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
+					messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
 					response.data.results.map(function(bus){
 						messageForSlack += busEmoji + ' #' + bus.route + ' in ' + bus.departureduetime + ' minutes\n';
 					})
