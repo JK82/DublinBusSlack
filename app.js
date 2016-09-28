@@ -30,31 +30,31 @@ app.post('/', function (req, res) {
 				  				weather = ':sunny:'
 				  			break;
 				  		case 'clear-night':
-				  				weather = ':full_moon:'
+				  				weather += ':full_moon:'
 				  			break;
 				  		case 'rain':
-				  				weather = ':rain_cloud:'
+				  				weather += ':rain_cloud:'
 				  			break;
 				  		case 'snow':
-				  				weather = ':snow_cloud:'
+				  				weather += ':snow_cloud:'
 				  			break;
 				  		case 'sleet':
-				  				weather = ':snow_cloud:'
+				  				weather += ':snow_cloud:'
 				  			break;
 				  		case 'wind':
-				  				weather = ':dash:'
+				  				weather += ':dash:'
 				  			break;
 				  		case 'fog':
-				  				weather = ':fog:'
+				  				weather += ':fog:'
 				  			break;
 				  		case 'cloudy':
-				  				weather = ':cloud:'
+				  				weather += ':cloud:'
 				  			break;
 				  		case 'partly-cloudy':
-				  				weather = ':mostly_sunny:'
+				  				weather += ':mostly_sunny:'
 				  			break;
 				  		case 'partly-cloudy-night':
-				  				weather = '::crescent_moon::'
+				  				weather += '::crescent_moon::'
 				  			break
 				  		default:
 				  			''
