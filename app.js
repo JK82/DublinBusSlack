@@ -23,6 +23,7 @@ app.post('/', function (req, res) {
 	var weather = 'Check out the weather --> ';
 
 	Buses.getBusStopName(busStopNumber).then(function(response){
+		console.log('HI')
 		busStopName = response.data.results[0].shortname;
 		Weather.getWeather(response.data.results[0].latitude,esponse.data.results[0].longitude).then(function(response){
 			weather += Weather.getEmoji(response.data.currently.icon);
