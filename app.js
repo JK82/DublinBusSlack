@@ -18,7 +18,7 @@ app.post('/', function (req, res) {
 	var busStopEmoji = ':busstop:';
 	var busEmoji = ':bus:';
 	var messageForSlack = '';
-	var weather = 'Check out the weather ';
+	var weather = 'Check out the weather --> ';
 
 	axios.get('https://data.dublinked.ie/cgi-bin/rtpi/busstopinformation?stopid='+ busStopNumber +'&format=json')
 	  .then(function (response) {
