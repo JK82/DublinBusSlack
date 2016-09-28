@@ -37,14 +37,14 @@ app.post('/', function (req, res) {
 				res.send({text:messageForSlack});
 
 			}).catch(function(error){
-
+				console.log(error + ' 1')
 			})
 
 		}).catch(function(error){
-
+				console.log(error + ' 2')
 		})
 	}).catch(function(error){
-
+			console.log(error + ' 3')
 	})
 
 	// axios.get('https://data.dublinked.ie/cgi-bin/rtpi/busstopinformation?stopid='+ busStopNumber +'&format=json')
