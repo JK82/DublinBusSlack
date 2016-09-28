@@ -4,7 +4,7 @@ var axios = require('axios')
 var Weather = {
 
 	getWeather:function(latitude,longitude){
-		return axios.get('https://api.darksky.net/forecast/09324a44567189a816d083eabbc01184/'+ response.data.results[0].latitude + ',' + response.data.results[0].longitude)
+		return axios.get({method:'get',url:'https://api.darksky.net/forecast/09324a44567189a816d083eabbc01184/'+ response.data.results[0].latitude + ',' + response.data.results[0].longitude})
 	},
 	getEmoji:function(weather){
 		var emoji = ''
