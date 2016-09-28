@@ -59,7 +59,7 @@ app.post('/', function (req, res) {
 				  		default:
 				  			''
 				  	}
-				  	weather += ' ' + esponse.data.currently.summary;
+				  	weather += ' ' + response.data.currently.summary;
 				    axios.get('http://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid='+ busStopNumber +'&format=json')
 							.then(function (response) {
 								messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
