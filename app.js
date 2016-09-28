@@ -23,14 +23,13 @@ app.post('/', function (req, res) {
 	var weather = 'Check out the weather --> ';
 
 	Buses.getBusStopName(busStopNumber).then(function(response){
-		console.log('HI')
 		busStopName = response.data.results[0].shortname;
 		Weather.getWeather(response.data.results[0].latitude,response.data.results[0].longitude).then(function(response){
 			weather += Weather.getEmoji(response.data.currently.icon);
 			weather += ' ' + response.data.currently.summary;
 			Buses.getBuses(busStopNumber).then(function(response){
 				messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
-				response.data.results.map(function(response){
+				response.data.results.map(function(bus){
 					messageForSlack += busEmoji + ' #' + bus.route + ' in ' + bus.departureduetime + ' minutes\n';
 				})
 				messageForSlack += '\n' + weather;
