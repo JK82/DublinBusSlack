@@ -29,7 +29,7 @@ app.post('/', function (req, res) {
 				  .then(function (response) {
 				  	switch(response.data.currently.icon){
 				  		case 'clear-day':
-				  				weather = ':sunny:'
+				  				weather += ':sunny:'
 				  			break;
 				  		case 'clear-night':
 				  				weather += ':full_moon:'
