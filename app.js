@@ -20,7 +20,7 @@ app.post('/', function (req, res) {
 	var messageForSlack = '';
 	var weather = 'Check out the weather --> ';
 
-	
+
 
 	axios.get('https://data.dublinked.ie/cgi-bin/rtpi/busstopinformation?stopid='+ busStopNumber +'&format=json')
 	  .then(function (response) {
@@ -52,7 +52,7 @@ app.post('/', function (req, res) {
 				  		case 'cloudy':
 				  				weather += ':cloud:'
 				  			break;
-				  		case 'partly-cloudy':
+				  		case 'partly-cloudy-day':
 				  				weather += ':mostly_sunny:'
 				  			break;
 				  		case 'partly-cloudy-night':
