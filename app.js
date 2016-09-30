@@ -36,6 +36,8 @@ app.post('/', function (req, res) {
 		urlToUse = urlJustBus;
 	}
 
+	console.log('URL TO USE: ' urlToUse);
+
 
 
 	axios.get('https://data.dublinked.ie/cgi-bin/rtpi/busstopinformation?stopid='+ busStopNumber +'&format=json')
