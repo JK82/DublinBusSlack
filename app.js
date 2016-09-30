@@ -14,11 +14,11 @@ app.listen(process.env.PORT || 3000, function () {
 
 app.post('/', function (req, res) {
 
-	var busAndRoute = req.body.text.split(" ");
+	var busAndRouteText = req.body.text.split(" ");
     var routeId = '';
     var busAndRoute = false;
-    if(busAndRoute.length > 1){
-    	routeId = busAndRoute[1];
+    if(busAndRouteText.length > 1){
+    	routeId = busAndRouteText[1];
     	busAndRoute = true;
     }
 	var busStopNumber = req.body.text;
