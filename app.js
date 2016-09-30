@@ -14,15 +14,27 @@ app.listen(process.env.PORT || 3000, function () {
 
 app.post('/', function (req, res) {
 
-	var test = req.body.text.split(" ");
-	console.log('TESTING: ' + test)
-
+	var busAndRoute = req.body.text.split(" ");
+    var routeId = '';
+    var busAndRoute = false;
+    if(busAndRoute.length > 1){
+    	routeId = busAndRoute[1];
+    	busAndRoute = true;
+    }
 	var busStopNumber = req.body.text;
 	var busStopName = '';
 	var busStopEmoji = ':busstop:';
 	var busEmoji = ':bus:';
 	var messageForSlack = '';
+	var urlToUse = '';
 	var weather = 'Check out the weather --> ';
+	var urlJustBus = 'http://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid='+ busStopNumber +'&format=json';
+	var urlBusAndRoute = 'http://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid='+ busStopNumber +'&routeid=' + routeId + '&format=json';
+	if(busAndRoute){
+		urlToUse = urlBusAndRoute;
+	}else{
+		urlToUse = urlJustBus;
+	}
 
 
 
@@ -67,7 +79,7 @@ app.post('/', function (req, res) {
 				  	}
 				  	weather += ' ' + response.data.currently.summary;
 				  	weather += ' :thermometer:' + Math.round(((response.data.currently.apparentTemperature - 32) * .5556))  + '°C - <https://darksky.net|Powered By Dark Sky> ';
-				    axios.get('http://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid='+ busStopNumber +'&format=json')
+				    axios.get(urlToUse)
 							.then(function (response) {
 								messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
 								response.data.results.map(function(bus){
