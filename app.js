@@ -62,6 +62,7 @@ app.post('/', function (req, res) {
 				  			''
 				  	}
 				  	weather += ' ' + response.data.currently.summary;
+				  	weather += ' :thermometer:' + response.data.currently.apparentTemperature + ' - <https://darksky.net|Powered By Dark Sky> ';
 				    axios.get('http://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid='+ busStopNumber +'&format=json')
 							.then(function (response) {
 								messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
@@ -72,17 +73,14 @@ app.post('/', function (req, res) {
 								res.send({text:messageForSlack});
 							})
 							.catch(function (error) {
-								console.log(error);
+								res.send({text:'Oh Poop :poop:, somedays us bots get out of bed on the wrong side, that or the Dublin Bus API is down'});
 							});
 				  })
 				  .catch(function (error) {
-				    console.log(error);
+				    res.send({text:'Hot Dog :hotdog:, somthing went wrong with the weather and then done screwed everything else up'});
 				  });
-
-	  		
-	    
 	  })
 	  .catch(function (error) {
-	    console.log(error);
+	    res.send({text:'Oh Poop :poop:, somedays us bots get out of bed on the wrong side, that or the Dublin Bus API is down'});
 	  });
 });
