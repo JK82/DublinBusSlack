@@ -13,6 +13,10 @@ app.listen(process.env.PORT || 3000, function () {
 '//'
 
 app.post('/', function (req, res) {
+
+	var test = req.body.text.split(" ");
+	console.log('TESTING: ' + test)
+
 	var busStopNumber = req.body.text;
 	var busStopName = '';
 	var busStopEmoji = ':busstop:';
