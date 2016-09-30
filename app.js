@@ -62,7 +62,7 @@ app.post('/', function (req, res) {
 				  			''
 				  	}
 				  	weather += ' ' + response.data.currently.summary;
-				  	weather += ' :thermometer:' + response.data.currently.apparentTemperature + ' - <https://darksky.net|Powered By Dark Sky> ';
+				  	weather += ' :thermometer:' + ((response.data.currently.apparentTemperature * 1.8) + 32)  + ' - <https://darksky.net|Powered By Dark Sky> ';
 				    axios.get('http://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid='+ busStopNumber +'&format=json')
 							.then(function (response) {
 								messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
