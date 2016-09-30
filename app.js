@@ -36,7 +36,7 @@ app.post('/', function (req, res) {
 		urlToUse = urlJustBus;
 	}
 
-	console.log('URL TO USE: ' urlToUse);
+	console.log('URL TO USE: ' +  urlToUse);
 
 
 
