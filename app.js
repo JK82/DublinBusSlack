@@ -18,6 +18,7 @@ app.post('/', function (req, res) {
     var routeId = '';
     var busStopNumber = '';
     var busAndRoute = false;
+    console.log('HI SELINA: ' +busAndRouteText)
     if(busAndRouteText.length > 1){
     	busStopNumber = busAndRouteText[0];
     	routeId = busAndRouteText[1];
