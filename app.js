@@ -16,12 +16,15 @@ app.post('/', function (req, res) {
 
 	var busAndRouteText = req.body.text.split(" ");
     var routeId = '';
+    var busStopNumber = '';
     var busAndRoute = false;
     if(busAndRouteText.length > 1){
+    	busStopNumber = busAndRouteText[0];
     	routeId = busAndRouteText[1];
     	busAndRoute = true;
+    }else{
+    	busStopNumber = req.body.text;
     }
-	var busStopNumber = req.body.text;
 	var busStopName = '';
 	var busStopEmoji = ':busstop:';
 	var busEmoji = ':bus:';
