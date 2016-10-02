@@ -94,8 +94,8 @@ app.post('/', function (req, res) {
 									if(bus.departureduetime == 'Due'){
 										timeMeasurement = 'Due';
 										prefix = 'is';
-									}else if(bus.departureduetime == 1){
-										timeMeasurement = 'minutes';
+									}else if(bus.departureduetime == "1"){
+										timeMeasurement = 'minute';
 									}
 									messageForSlack += busEmoji + ' #' + bus.route + ' ' + prefix + ' ' + bus.departureduetime + ' ' + timeMeasurement +'\n';
 								})
