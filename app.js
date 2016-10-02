@@ -89,7 +89,7 @@ app.post('/', function (req, res) {
 							.then(function (response) {
 								if(busAndRoute)
 								{
-									messageForSlack = "Hey " + req.body.user_name + " Here's the #"+ routeId + " buses due at " + busStopEmoji + ' ' + busStopName + '\n';
+									messageForSlack = "Hey " + req.body.user_name + " Here's the :bus:#"+ routeId + " buses due at " + busStopEmoji + ' ' + busStopName + '\n';
 								}else{
 									messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
 								}
