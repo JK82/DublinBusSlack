@@ -89,7 +89,15 @@ app.post('/', function (req, res) {
 							.then(function (response) {
 								messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
 								response.data.results.map(function(bus){
-									messageForSlack += busEmoji + ' #' + bus.route + ' in ' + bus.departureduetime + ' minutes\n';
+									var timeMeasurement = 'minutes';
+									var prefix = 'in';
+									if(bus.departureduetime == 'Due'){
+										timeMeasurement = 'Due';
+										prefix = 'is';
+									}else if(bus.departureduetime == 1){
+										timeMeasurement = 'minutes';
+									}
+									messageForSlack += busEmoji + ' #' + bus.route + ' ' + prefix + ' ' + bus.departureduetime + ' ' + timeMeasurement +'\n';
 								})
 								messageForSlack += '\n' + weather;
 								res.send({text:messageForSlack});
