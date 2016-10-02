@@ -93,7 +93,6 @@ app.post('/', function (req, res) {
 								}else{
 									messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
 								}
-								messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
 								response.data.results.map(function(bus){
 									var timeMeasurement = 'minutes';
 									var prefix = 'in';
