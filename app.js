@@ -87,6 +87,12 @@ app.post('/', function (req, res) {
 				  	weather += ' :thermometer:' + Math.round(((response.data.currently.apparentTemperature - 32) * .5556))  + '°C - <https://darksky.net|Powered By Dark Sky> ';
 				    axios.get(urlToUse)
 							.then(function (response) {
+								if(busAndRoute)
+								{
+									messageForSlack = "Hey " + req.body.user_name + " Here's the #"+ routeId + " buses due at " + busStopEmoji + ' ' + busStopName + '\n';
+								}else{
+									messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
+								}
 								messageForSlack = "Hey " + req.body.user_name + " Here's the buses due at " + busStopEmoji + ' ' + busStopName + '\n';
 								response.data.results.map(function(bus){
 									var timeMeasurement = 'minutes';
