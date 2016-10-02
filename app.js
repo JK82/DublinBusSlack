@@ -97,7 +97,7 @@ app.post('/', function (req, res) {
 									var timeMeasurement = 'minutes';
 									var prefix = 'in';
 									if(bus.departureduetime == 'Due'){
-										timeMeasurement = 'Due';
+										timeMeasurement = '';
 										prefix = 'is';
 									}else if(bus.departureduetime == "1"){
 										timeMeasurement = 'minute';
