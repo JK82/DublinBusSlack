@@ -10,7 +10,7 @@ app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3001!');
 });
 
-app.get('/auth/good', function (req, res) {
+app.get('/auth/sub/good', function (req, res) {
   console.log('HI JOHN I GOT HERE')
   res.redirect('http://slackdublinbus.xyz')
 });
@@ -22,7 +22,7 @@ app.get('/auth', function (req, res) {
             client_id: '84539294599.84589472165',
             client_secret:'7165aa57021d6e65d5291c5eb358486d',
             code:req.query.code,
-            redirect_uri:'https://pacific-springs-98505.herokuapp.com/auth/good'
+            redirect_uri:'https://pacific-springs-98505.herokuapp.com/auth/sub/good'
           }
         })
       .then(function (response) {
