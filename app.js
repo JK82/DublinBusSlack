@@ -12,6 +12,7 @@ app.listen(process.env.PORT || 3000, function () {
 
 
 app.get('/auth', function (req, res) {
+  console.log('HERE HERE');
   if(req.query.code){
     axios.get('https://slack.com/api/oauth.access', {
             params: {
@@ -30,6 +31,7 @@ app.get('/auth', function (req, res) {
             console.log(error);
         });
     }else {
+      console.log('BLACK MAMBA');
       res.redirect('http://slackdublinbus.xyz');
     }
 });
