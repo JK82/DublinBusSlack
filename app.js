@@ -10,6 +10,11 @@ app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3001!');
 });
 
+app.get('/good', function (req, res) {
+  res.redirect('http://slackdublinbus.xyz')
+});
+
+
 app.get('/auth', function (req, res) {
   axios.get('https://slack.com/api/oauth.access', {
           params: {
