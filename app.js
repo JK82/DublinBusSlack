@@ -11,7 +11,6 @@ app.listen(process.env.PORT || 3000, function () {
 });
 
 app.get('/auth', function (req, res) {
-  console.log(req.query.code);
   axios.get('https://slack.com/api/oauth.access', {
           data: {
             client_id: '84539294599.84589472165',
@@ -21,9 +20,11 @@ app.get('/auth', function (req, res) {
           }
         })
       .then(function (response) {
-          console.log(response);
+          console.log('HI')
+          console.log(JSON.stringify(response));
       })
       .catch(function (error) {
+          console.log('CONDE NAST')
           console.log(error);
       });
 });
