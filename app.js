@@ -21,7 +21,7 @@ app.get('/auth', function (req, res) {
         })
       .then(function (response) {
           console.log('HI')
-          console.log(JSON.stringify(response));
+          console.log(response);
       })
       .catch(function (error) {
           console.log('CONDE NAST')
