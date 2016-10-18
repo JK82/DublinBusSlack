@@ -11,7 +11,7 @@ app.listen(process.env.PORT || 3000, function () {
 });
 
 app.get('/auth', function (req, res) {
-  console.log(req.params.code);
+  console.log(req.query.code);
 });
 
 app.post('/bus', function (req, res) {
