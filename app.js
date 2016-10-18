@@ -12,7 +12,7 @@ app.listen(process.env.PORT || 3000, function () {
 
 '//'
 
-app.post('/', function (req, res) {
+app.post('/bus', function (req, res) {
 
 	var busAndRouteText = req.body.text.split(" ");
     var routeId = '';
