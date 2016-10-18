@@ -15,7 +15,7 @@ app.get('/auth', function (req, res) {
   axios.get('https://slack.com/api/oauth.access', {
           data: {
             client_id: 84539294599.84589472165,
-            client_secret:7165aa57021d6e65d5291c5eb358486d,
+            client_secret:'7165aa57021d6e65d5291c5eb358486d',
             code:req.query.code,
             redirect_uri:'http://slackdublinbus.xyz'
           }
