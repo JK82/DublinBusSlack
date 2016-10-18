@@ -10,7 +10,7 @@ app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3001!');
 });
 
-app.get('auth/good', function (req, res) {
+app.get('/auth/good', function (req, res) {
   console.log('HI JOHN I GOT HERE')
   res.redirect('http://slackdublinbus.xyz')
 });
