@@ -18,13 +18,13 @@ app.get('/auth', function (req, res) {
             params: {
               client_id: '84539294599.84589472165',
               client_secret:'7165aa57021d6e65d5291c5eb358486d',
-              code:req.query.code,
-              redirect_uri:'https://pacific-springs-98505.herokuapp.com/auth'
+              code:req.query.code
             }
           })
         .then(function (response) {
             console.log('HI')
             console.log(response);
+            res.redirect('http://slackdublinbus.xyz');
         })
         .catch(function (error) {
             console.log('CONDE NAST')
@@ -32,7 +32,7 @@ app.get('/auth', function (req, res) {
         });
     }else {
       console.log('BLACK MAMBA');
-      res.redirect('http://slackdublinbus.xyz');
+
     }
 });
 
