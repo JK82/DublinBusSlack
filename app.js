@@ -12,7 +12,7 @@ app.listen(process.env.PORT || 3000, function () {
 
 app.get('/auth', function (req, res) {
   console.log(req.body.text);
-}
+});
 
 app.post('/bus', function (req, res) {
 
