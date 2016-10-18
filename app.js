@@ -10,29 +10,28 @@ app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3001!');
 });
 
-app.get('/auth/sub/good', function (req, res) {
-  console.log('HI JOHN I GOT HERE')
-  res.redirect('http://slackdublinbus.xyz')
-});
-
 
 app.get('/auth', function (req, res) {
-  axios.get('https://slack.com/api/oauth.access', {
-          params: {
-            client_id: '84539294599.84589472165',
-            client_secret:'7165aa57021d6e65d5291c5eb358486d',
-            code:req.query.code,
-            redirect_uri:'https://pacific-springs-98505.herokuapp.com/auth'
-          }
+  if(req.query.code){
+    axios.get('https://slack.com/api/oauth.access', {
+            params: {
+              client_id: '84539294599.84589472165',
+              client_secret:'7165aa57021d6e65d5291c5eb358486d',
+              code:req.query.code,
+              redirect_uri:'https://pacific-springs-98505.herokuapp.com/auth'
+            }
+          })
+        .then(function (response) {
+            console.log('HI')
+            console.log(response);
         })
-      .then(function (response) {
-          console.log('HI')
-          console.log(response);
-      })
-      .catch(function (error) {
-          console.log('CONDE NAST')
-          console.log(error);
-      });
+        .catch(function (error) {
+            console.log('CONDE NAST')
+            console.log(error);
+        });
+    }else {
+      res.redirect('http://slackdublinbus.xyz');
+    }
 });
 
 app.post('/bus', function (req, res) {
