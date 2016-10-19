@@ -4,7 +4,8 @@ var axios = require('axios')
 var nodemailer = require('nodemailer')
 
 var app = require('express');
-app.use(bodyParser());
+app.use(bodyParser.json());
+
 
 var smtpConfig = {
     host: 'smtp.gmail.com',
