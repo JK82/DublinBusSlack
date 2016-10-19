@@ -4,6 +4,7 @@ var axios = require('axios')
 var nodemailer = require('nodemailer')
 
 var app = require('express');
+app.use(bodyParser());
 
 var smtpConfig = {
     host: 'smtp.gmail.com',
@@ -37,8 +38,6 @@ function sendEmailToJohn(team){
       console.log('Message sent: ' + info.response);
   });
 }
-
-app.use(bodyParser());
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3001!');
