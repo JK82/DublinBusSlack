@@ -1,8 +1,37 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 var axios = require('axios')
+mailer = require('express-mailer');
 
-var app = express();
+var app = require('express')(),
+    mailer = require('express-mailer');
+
+mailer.extend(app, {
+  from: 'slackdublinbus@gmail.com',
+  host: 'smtp.gmail.com', // hostname
+  secureConnection: true, // use SSL
+  port: 465, // port for secure SMTP
+  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+  auth: {
+    user: 'slackdublinbus@gmail.com',
+    pass: 'JohnWasFormedIn1982'
+  }
+});
+
+function sendEmailToJohn(){
+  app.mailer.send('Hello John', {
+    to: 'info@slackdublinbus.xyz', // REQUIRED. This can be a comma delimited string just like a normal email to field.
+    subject: 'Somebody hasadded slackdublinbus to Slack'
+    // REQUIRED. // All additional properties are also passed to the template as local variables.
+  }, function (err) {
+    if (err) {
+      // handle error
+      console.log(err);
+      return;
+    }
+      console.log('Email Sent');
+  });
+}
 
 app.use(bodyParser());
 
@@ -12,8 +41,6 @@ app.listen(process.env.PORT || 3000, function () {
 
 
 app.get('/auth', function (req, res) {
-  console.log('HERE HERE');
-  if(req.query.code){
     axios.get('https://slack.com/api/oauth.access', {
             params: {
               client_id: '84539294599.84589472165',
@@ -22,18 +49,13 @@ app.get('/auth', function (req, res) {
             }
           })
         .then(function (response) {
-            console.log('HI')
-            console.log(response);
+            sendEmailToJohn();
             res.redirect('http://slackdublinbus.xyz');
         })
         .catch(function (error) {
-            console.log('CONDE NAST')
             console.log(error);
         });
-    }else {
-      console.log('BLACK MAMBA');
 
-    }
 });
 
 app.post('/bus', function (req, res) {
@@ -63,10 +85,6 @@ app.post('/bus', function (req, res) {
 	}else{
 		urlToUse = urlJustBus;
 	}
-
-	console.log('URL TO USE: ' +  urlToUse);
-
-
 
 	axios.get('https://data.dublinked.ie/cgi-bin/rtpi/busstopinformation?stopid='+ busStopNumber +'&format=json')
 	  .then(function (response) {
