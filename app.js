@@ -24,7 +24,7 @@ var transporter = nodemailer.createTransport(smtpConfig);
 
 function sendEmailToJohn(team){
   var mailOptions = {
-      from: '"John Keane 👥" <john@slackdublinbus.xyz>', // sender address
+      from: '"John Keane 👥" <slackdublinbus@gmail.com>', // sender address
       to: 'johnkeanejnr@gmail.com', // list of receivers
       subject: 'Somebody has installed SlackDublinBus on SLack ✔', // Subject line
       text: 'Hello John, ' + team + ' have installed SlackDublinBus', // plaintext body
