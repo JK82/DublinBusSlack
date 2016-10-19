@@ -3,8 +3,8 @@ var bodyParser = require('body-parser')
 var axios = require('axios')
 var nodemailer = require('nodemailer')
 
-var app = require('express');
-app.use(bodyParser()); 
+var app = express();
+app.use(bodyParser());
 
 
 var smtpConfig = {
