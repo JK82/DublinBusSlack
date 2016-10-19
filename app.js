@@ -1,35 +1,40 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 var axios = require('axios')
-mailer = require('express-mailer');
+var nodemailer = require('nodemailer')
 
-var app = require('express')(),
-    mailer = require('express-mailer');
+var app = require('express');
 
-mailer.extend(app, {
-  from: 'slackdublinbus@gmail.com',
-  host: 'smtp.gmail.com', // hostname
-  secureConnection: true, // use SSL
-  port: 465, // port for secure SMTP
-  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
-  auth: {
-    user: 'slackdublinbus@gmail.com',
-    pass: 'JohnWasFormedIn1982'
-  }
-});
-
-function sendEmailToJohn(){
-  app.mailer.send('Hello John', {
-    to: 'info@slackdublinbus.xyz', // REQUIRED. This can be a comma delimited string just like a normal email to field.
-    subject: 'Somebody hasadded slackdublinbus to Slack'
-    // REQUIRED. // All additional properties are also passed to the template as local variables.
-  }, function (err) {
-    if (err) {
-      // handle error
-      console.log(err);
-      return;
+var smtpConfig = {
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // use SSL
+    auth: {
+        user: 'slackdublinbus@gmail.com',
+        pass: 'JohnWasFormedIn1982'
     }
-      console.log('Email Sent');
+};
+
+var transporter = nodemailer.createTransport(smtpConfig);
+
+// setup e-mail data with unicode symbols
+
+
+function sendEmailToJohn(team){
+  var mailOptions = {
+      from: '"John Keane 👥" <john@slackdublinbus.xyz>', // sender address
+      to: 'johnkeanejnr@gmail.com', // list of receivers
+      subject: 'Somebody has installed SlackDublinBus on SLack ✔', // Subject line
+      text: 'Hello John, ' + team + ' have installed SlackDublinBus', // plaintext body
+      html: '<b>Hello John, ' + team + ' have installed SlackDublinBus</b>' // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, function(error, info){
+      if(error){
+          return console.log(error);
+      }
+      console.log('Message sent: ' + info.response);
   });
 }
 
@@ -49,7 +54,7 @@ app.get('/auth', function (req, res) {
             }
           })
         .then(function (response) {
-            sendEmailToJohn();
+            sendEmailToJohn('Banana');
             res.redirect('http://slackdublinbus.xyz');
         })
         .catch(function (error) {
