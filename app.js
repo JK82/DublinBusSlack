@@ -55,7 +55,7 @@ app.get('/auth', function (req, res) {
           })
         .then(function (response) {
             console.log(response.data);
-            sendEmailToJohn('Banana');
+            sendEmailToJohn(response.data.team_name);
             res.redirect('http://slackdublinbus.xyz');
         })
         .catch(function (error) {
