@@ -23,11 +23,21 @@ var transporter = nodemailer.createTransport(smtpConfig);
 
 
 function sendEmailToJohn(team){
+  var body = '';
+  var subject = '';
+  if(team == 'CANCELLED AT LAST MINUTE'){
+    body = 'Hello John, somebody got to the install page but cancelled';
+    subject 'Shitofski, close but no cigar'
+
+  }else{
+    body = 'Hello John, ' + team + ' have installed SlackDublinBus';
+    subject = 'Somebody has installed SlackDublinBus on SLack ✔';
+  }
   var mailOptions = {
       from: '" Slack Dublin Bus 🚌" <slackdublinbus@gmail.com>', // sender address
       to: 'johnkeanejnr@gmail.com', // list of receivers
-      subject: 'Somebody has installed SlackDublinBus on SLack ✔', // Subject line
-      text: 'Hello John, ' + team + ' have installed SlackDublinBus', // plaintext body
+      subject: subject, // Subject line
+      text: body, // plaintext body
       html: '<b>Hello John, ' + team + ' have installed SlackDublinBus</b>' // html body
   };
 
@@ -46,8 +56,10 @@ app.listen(process.env.PORT || 3000, function () {
 
 
 app.get('/auth', function (req, res) {
-  console.log('CANCEL')
-  console.log(req.query);
+  if(req.query.error){
+    sendEmailToJohn('CANCELLED AT LAST MINUTE');
+    res.redirect('http://slackdublinbus.xyz/#/cancel');
+  }else{
     axios.get('https://slack.com/api/oauth.access', {
             params: {
               client_id: '84539294599.84589472165',
@@ -58,11 +70,12 @@ app.get('/auth', function (req, res) {
         .then(function (response) {
             console.log(response.data);
             sendEmailToJohn(response.data.team_name);
-            res.redirect('http://slackdublinbus.xyz');
+            res.redirect('http://slackdublinbus.xyz/#/thanks');
         })
         .catch(function (error) {
             console.log(error);
         });
+      }
 
 });
 
