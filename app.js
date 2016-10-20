@@ -24,7 +24,7 @@ var transporter = nodemailer.createTransport(smtpConfig);
 
 function sendEmailToJohn(team){
   var mailOptions = {
-      from: '"John Keane 👥" <slackdublinbus@gmail.com>', // sender address
+      from: '" Slack Dublin Bus 🚌" <slackdublinbus@gmail.com>', // sender address
       to: 'johnkeanejnr@gmail.com', // list of receivers
       subject: 'Somebody has installed SlackDublinBus on SLack ✔', // Subject line
       text: 'Hello John, ' + team + ' have installed SlackDublinBus', // plaintext body
@@ -46,6 +46,7 @@ app.listen(process.env.PORT || 3000, function () {
 
 
 app.get('/auth', function (req, res) {
+  console.log('CANCEL: ' + req.query);
     axios.get('https://slack.com/api/oauth.access', {
             params: {
               client_id: '84539294599.84589472165',
