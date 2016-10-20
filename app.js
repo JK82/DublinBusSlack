@@ -46,7 +46,8 @@ app.listen(process.env.PORT || 3000, function () {
 
 
 app.get('/auth', function (req, res) {
-  console.log('CANCEL: ' + req.query);
+  console.log('CANCEL')
+  console.log(req.query);
     axios.get('https://slack.com/api/oauth.access', {
             params: {
               client_id: '84539294599.84589472165',
