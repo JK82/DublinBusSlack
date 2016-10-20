@@ -27,7 +27,7 @@ function sendEmailToJohn(team){
   var subject = '';
   if(team == 'CANCELLED AT LAST MINUTE'){
     body = 'Hello John, somebody got to the install page but cancelled';
-    subject 'Shitofski, close but no cigar'
+    subject = 'Shitofski, close but no cigar';
 
   }else{
     body = 'Hello John, ' + team + ' have installed SlackDublinBus';
