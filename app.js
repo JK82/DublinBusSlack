@@ -81,7 +81,7 @@ app.get('/auth', function (req, res) {
 
 app.post('/bus', function (req, res) {
 
-  if (req.body.texttoLowerCase() == 'help'){
+  if (req.body.text.toLowerCase() == 'help'){
     res.send({text:'👋  Hi! John here to help, I was waiting on your call 🤗 ' + '\n' +
     'All you have to do is send me the following command /bus <bus number> e.g /bus 45 ' + '\n' + 'You can narrow it down to the route like this' + '\n'
     + '/bus 45 <bus route> like /bus 45 12 to narrow it down to the route. Hope this helps 😎'});
