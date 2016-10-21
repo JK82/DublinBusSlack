@@ -84,7 +84,7 @@ app.post('/bus', function (req, res) {
   if (req.body.text.toLowerCase() == 'help'){
     res.send({text:'👋  Hi! John here to help, I was waiting on your call 🤗 ' + '\n' +
     'All you have to do is send me the following command: /bus <bus number> e.g /bus 45 and this will return all the buses due at stop 45' + '\n' + 'You can narrow it down to the route like this' +
-    + '/bus 45 <bus route> like /bus 45 12 . This will return all the #12 buses due at stop 45! Hope this helps 😎'});
+    '/bus 45 <bus route> like /bus 45 12 . This will return all the #12 buses due at stop 45! Hope this helps 😎'});
   }
 
 	var busAndRouteText = req.body.text.split(" ");
